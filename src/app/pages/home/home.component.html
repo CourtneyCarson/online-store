@@ -8,6 +8,7 @@
 
   <mat-drawer-content class="p-6">
     <!-- app products header component -->
-    <products-header></products-header>
+    <products-header (columnCountChange)="onColumnCountChange($event)"></products-header>
+    {{colmuns}}
   </mat-drawer-content>
 </mat-drawer-container>
