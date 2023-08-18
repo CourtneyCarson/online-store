@@ -1,0 +1,27 @@
+<mat-card class="text-center">
+  <div>
+    <!-- product image -->
+    <img
+      class="mb-1 mx-auto h-[200px]"
+      src="https://via.placeholder.com/150"
+      alt="placeholder img"
+    />
+
+    <!-- product info -->
+    <div class="w-full">
+      <div>
+        <h5>Shoes</h5>
+        <p class="truncate hover:whitespace-normal">Sneakers</p>
+        <p>Description</p>
+      </div>
+    </div>
+
+    <!-- price and add to cart icon -->
+    <div class="flex justify-between">
+      <span class="text-red-400">{{ '150' | currency }}</span>
+      <button mat-icon-button>
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

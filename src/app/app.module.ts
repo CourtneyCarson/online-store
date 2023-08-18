@@ -21,6 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FiltersComponent } from './pages/home/components/filters/filters.component';
+import { ProductsBoxComponent } from './pages/home/components/products-box/products-box.component';
 import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
 import { HomeComponent } from './pages/home/home.component';
 
@@ -46,6 +47,7 @@ const material = [
     HomeComponent,
     ProductsHeaderComponent,
     FiltersComponent,
+    ProductsBoxComponent,
   ],
   imports: [
     BrowserModule,
