@@ -1,18 +1,21 @@
-<mat-card class="text-center">
-  <div>
+<mat-card [ngClass]="{ 'text-center': !fullWidthMode }">
+  {{ fullWidthMode }}
+
+  <div [ngClass]="{ flex: fullWidthMode }">
     <!-- product image -->
     <img
       class="mb-1 mx-auto h-[200px]"
+      [ngClass]="{ 'h-[200px]': !fullWidthMode, 'h-[360px]': fullWidthMode }"
       src="https://via.placeholder.com/150"
       alt="placeholder img"
     />
 
     <!-- product info -->
     <div class="w-full">
-      <div>
+      <div [ngClass]="{ 'px-8 flex flex-col justify-between': fullWidthMode }">
         <h5>Shoes</h5>
         <p class="truncate hover:whitespace-normal">Sneakers</p>
-        <p>Description</p>
+        <p *ngIf="fullWidthMode">Description</p>
       </div>
     </div>
 

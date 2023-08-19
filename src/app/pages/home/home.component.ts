@@ -7,8 +7,8 @@ const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 2: 335, 3: 350 };
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  colmuns = 3;
-  rowHeight = ROWS_HEIGHT[this.colmuns];
+  columns = 3;
+  rowHeight = ROWS_HEIGHT[this.columns];
   category: string | undefined;
 
   constructor() {}
@@ -16,8 +16,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   onColumnCountChange(columnsNumber: number): void {
-    this.colmuns = columnsNumber;
-    this.rowHeight = ROWS_HEIGHT[this.colmuns];
+    this.columns = columnsNumber;
+    this.rowHeight = ROWS_HEIGHT[this.columns];
+    console.log('columncountsokay', this.columns)
   }
 
   onShowCategory(newCategory: string): void {
