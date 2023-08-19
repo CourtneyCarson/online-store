@@ -33,4 +33,14 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource = this.cart.items;
   }
+
+  getTotal(items: Array<CartItem>): number {
+    // return this.dataSource.reduce((acc, item) => {
+    //   return acc + item.price * item.quantity;
+    // }, 0);
+
+    return items
+      .map((item) => item.price * item.quantity)
+      .reduce((previous, current) => previous + current, 0);
+  }
 }
