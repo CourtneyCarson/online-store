@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 2: 335, 3: 350 };
+// explain this code to me please
+ 
+const ROWS_HEIGHT: { [id: number]: number } = { 1: 400, 3: 335, 4: 350 };
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,7 @@ export class HomeComponent implements OnInit {
   onColumnCountChange(columnsNumber: number): void {
     this.columns = columnsNumber;
     this.rowHeight = ROWS_HEIGHT[this.columns];
-    console.log('columncountsokay', this.columns)
+    console.log('columncountsokay', this.columns, this.rowHeight)
   }
 
   onShowCategory(newCategory: string): void {

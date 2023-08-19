@@ -20,6 +20,7 @@ export class ProductsHeaderComponent {
   }
 
   onColumnsUpdated(columnsNumber: number): void {
+    console.log('prodsheadercount emittingg', columnsNumber);
     this.columnCountChange.emit(columnsNumber);
   }
 }
