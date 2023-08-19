@@ -20,6 +20,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HeaderComponent } from './components/header/header.component';
+import { CartComponent } from './pages/cart/cart.component';
 import { FiltersComponent } from './pages/home/components/filters/filters.component';
 import { ProductBoxComponent } from './pages/home/components/products-box/product-box.component';
 import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
@@ -48,6 +49,7 @@ const material = [
     ProductsHeaderComponent,
     FiltersComponent,
     ProductBoxComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
