@@ -6,7 +6,7 @@
     <img
       class="mb-1 mx-auto h-[200px]"
       [ngClass]="{ 'h-200px': !fullWidthMode, 'h-[360px]': fullWidthMode }"
-      src="https://via.placeholder.com/150"
+      src={{product?.image}}
       alt="placeholder img"
     />
 
@@ -22,7 +22,7 @@
     <!-- price and add to cart icon -->
     <div class="flex justify-between">
       <span class="text-red-400">{{ '150' | currency }}</span>
-      <button mat-icon-button>
+      <button mat-icon-button (click)="onAddToCart()">
         <mat-icon>add_shopping_cart</mat-icon>
       </button>
     </div>

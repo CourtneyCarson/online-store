@@ -16,9 +16,11 @@
     <mat-grid-list gutterSize="16" [cols]="columns" [rowHeight]="rowHeight">
       <mat-grid-tile>
         <!-- product-box -->
+        Prod Box
         <product-box
           class="w-full"
           [fullWidthMode]="columns === 1"
+          (addToCart)="onAddToCart($event)"
         ></product-box>
       </mat-grid-tile>
     </mat-grid-list>

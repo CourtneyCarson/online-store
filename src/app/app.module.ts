@@ -25,6 +25,7 @@ import { FiltersComponent } from './pages/home/components/filters/filters.compon
 import { ProductBoxComponent } from './pages/home/components/products-box/product-box.component';
 import { ProductsHeaderComponent } from './pages/home/components/products-header/products-header.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CartService } from './services/cart.service';
 
 const material = [
   MatBadgeModule,
@@ -57,7 +58,7 @@ const material = [
     BrowserAnimationsModule,
     ...material,
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
