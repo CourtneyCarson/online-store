@@ -27,12 +27,17 @@ export class CartService {
     }
     this.cart.next({ items });
     this._snackbar.open('1 Item added to cart', 'Ok', { duration: 3000 });
-    console.log('cart service', this.cart.value);
   }
 
   getTotal(items: Array<CartItem>): number {
     return items
       .map((item) => item.price * item.quantity)
       .reduce((previous, current) => previous + current, 0);
+  }
+
+  // emit empty value
+  clearCart() {
+    this.cart.next({ items: [] });
+    this._snackbar.open('Cart has been cleared.', 'Ok', { duration: 3000 });
   }
 }

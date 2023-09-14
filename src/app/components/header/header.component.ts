@@ -17,11 +17,6 @@ export class HeaderComponent {
 
   set cart(cart: Cart) {
     this._cart = cart;
-    // udpate cart quantity
-    // this.itemsQuantity = cart.items.reduce(
-    //   (acc, item) => acc + item.quantity,
-    //   0
-    // );
 
     this.itemsQuantity = cart.items
       .map((item) => item.quantity)
@@ -30,9 +25,11 @@ export class HeaderComponent {
 
   constructor(private _cartService: CartService) {}
 
-
   getTotal(items: Array<CartItem>): number {
     return this._cartService.getTotal(items);
   }
 
+  onClearCart() {
+    this._cartService.clearCart();
+  }
 }
