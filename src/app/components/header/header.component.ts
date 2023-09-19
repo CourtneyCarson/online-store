@@ -14,10 +14,8 @@ export class HeaderComponent {
   @Input() get cart(): Cart {
     return this._cart;
   }
-
   set cart(cart: Cart) {
     this._cart = cart;
-
     this.itemsQuantity = cart.items
       .map((item) => item.quantity)
       .reduce((prev, current) => prev + current, 0);

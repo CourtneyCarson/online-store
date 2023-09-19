@@ -7,6 +7,12 @@ import { Cart, CartItem } from '../models/cart.models';
   providedIn: 'root',
 })
 export class CartService {
+  // set a behavior subject with an empty cart that listens to local storage
+
+  // cart = new BehaviorSubject<Cart>(
+  //   JSON.parse(localStorage.getItem('cart') ) || { items: [] }
+  // );
+
   cart = new BehaviorSubject<Cart>({ items: [] });
 
   constructor(private _snackbar: MatSnackBar) {}
@@ -26,7 +32,7 @@ export class CartService {
       items.push(item);
     }
     this.cart.next({ items });
-    this._snackbar.open('1 Item added to cart', 'Ok', { duration: 3000 });
+    this._snackbar.open('1 item added to cart', 'Ok', { duration: 3000 });
   }
 
   getTotal(items: Array<CartItem>): number {
@@ -39,5 +45,11 @@ export class CartService {
   clearCart() {
     this.cart.next({ items: [] });
     this._snackbar.open('Cart has been cleared.', 'Ok', { duration: 3000 });
+  }
+
+  removeFromCart(item: CartItem): void {
+    const filteredItems = this.cart.value.items.filter((i) => i.id !== item.id);
+    this.cart.next({ items: filteredItems });
+    this._snackbar.open('1 item removed from cart.', 'Ok', { duration: 3000 });
   }
 }
