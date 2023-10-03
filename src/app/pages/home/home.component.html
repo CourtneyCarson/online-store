@@ -14,10 +14,10 @@
 
     <!-- grid for items -->
     <mat-grid-list gutterSize="16" [cols]="columns" [rowHeight]="rowHeight">
-      <mat-grid-tile>
+      <mat-grid-tile *ngFor="let product of products">
         <!-- product-box -->
-        Prod Box
-        <product-box
+        <product-box 
+        [product]="product"
           class="w-full"
           [fullWidthMode]="columns === 1"
           (addToCart)="onAddToCart($event)"

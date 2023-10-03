@@ -7,14 +7,7 @@ import { Product } from 'src/app/models/product.model';
 })
 export class ProductBoxComponent implements OnInit {
   @Input() fullWidthMode = false; //if someone clicks on the product box, it will be full width
-  product: Product | undefined = {
-    id: 1,
-    title: 'sneakers',
-    price: 150,
-    category: 'shoes',
-    description: 'description',
-    image: 'https://via.placeholder.com/150',
-  };
+  @Input() product: Product | undefined;
 
   @Output() addToCart: EventEmitter<Product> = new EventEmitter<Product>();
 
