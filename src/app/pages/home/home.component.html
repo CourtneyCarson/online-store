@@ -9,6 +9,8 @@
   <mat-drawer-content class="p-6">
     <!-- app products header component -->
     <products-header
+    (itemsCountChange)="onItemsCountChange($event)"
+    (sortChange)="onSortChange($event)"
       (columnCountChange)="onColumnCountChange($event)"
     ></products-header>
 
