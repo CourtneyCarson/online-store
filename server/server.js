@@ -10,35 +10,31 @@ app.use(bodyParser.json());
 app.use(cors({ origin: true, credentials: true }));
 
 const stripe = require('stripe')(
-  'pk_test_51NgZ9ACmKyG5WxKZaty4gFzhexl5DiFJkuvj5lWSYo7xWBMvlCWYnuwa5p1lT5oj2JmgRrfPVFfCYUS66GvxQbDt00LrCAtpug'
+  'sk_test_51NgZ9ACmKyG5WxKZHidz4nnXUGqVvxoPHKckIKmmFy729PIhsCGt1oWw1dL8DZObVPPVhKfG9kjRLiNXkFZyxMHH00GcmZoiTc'
 );
 
 app.post('/checkout', async (req, res, next) => {
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: req.body.items.map((item) => ({
-        currency: 'usd',
-        product_data: {
-          name: item.name,
-          images: [item.product],
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.name,
+            images: [item.product],
+          },
+          unit_amount: item.price * 100,
         },
-        unit_amount: item.price * 100, // stiripe uses cents, we want dollars
+        quantity: item.quantity,
       })),
       mode: 'payment',
       success_url: 'http://localhost:4242/success.html',
       cancel_url: 'http://localhost:4242/cancel.html',
     });
-    res.status(200).json(session)
+    res.status(200).json(session);
   } catch (error) {
     next(error);
   }
 });
 
 app.listen(4242, () => console.log('Running on port 4242'));
-
-// const port = process.env.PORT || 3000;
-
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// }
-// );
