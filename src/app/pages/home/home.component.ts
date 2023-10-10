@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { MatDrawerMode } from '@angular/material/sidenav';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
@@ -18,11 +19,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   sort = 'desc';
   count = '12';
   productsSubscription: Subscription | undefined;
-
+  isMobile: boolean | undefined;
+  isTablet: boolean | undefined;
+  isDesktop: boolean | undefined;
+  sidePanelMode: MatDrawerMode | undefined;
+  showFiller = false;
   constructor(
     private cartService: CartService,
     private storeService: StoreService
-  ) {}
+  ) {
+    this.checkMediaQuery();
+    // this.setSidePanelMode();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkMediaQuery();
+  }
 
   ngOnInit(): void {
     this.getProducts();
@@ -39,17 +52,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   onColumnCountChange(columnsNumber: number): void {
     this.columns = columnsNumber;
     this.rowHeight = ROWS_HEIGHT[this.columns];
-    console.log('columncountsokay', this.columns, this.rowHeight);
   }
 
   onShowCategory(newCategory: string): void {
     this.category = newCategory;
-    // console.log('home category', newCategory);
     this.getProducts();
   }
 
   onAddToCart(product: Product): void {
-    console.log('add to cart', product);
     // service
     this.cartService.addToCart({
       product: product.image,
@@ -74,4 +84,24 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.productsSubscription.unsubscribe();
     }
   }
+
+  // create method that gets media query size
+  private checkMediaQuery() {
+    this.isMobile = window.matchMedia('(max-width: 600px)').matches;
+    this.isTablet = window.matchMedia(
+      '(min-width: 601px) and (max-width: 1024px)'
+    ).matches;
+    this.isDesktop = window.matchMedia('(min-width: 1025px)').matches;
+
+    console.log(this.isMobile, this.isTablet, this.isDesktop);
+  }
+
+  // setSidePanelMode() {
+  //   if (this.isMobile || this.isTablet) {
+  //     this.sidePanelMode = 'over';
+  //   } else {
+  //     this.sidePanelMode = 'side';
+  //   }
+  //   console.log(this.sidePanelMode);
+  // }
 }

@@ -6,7 +6,7 @@ import { Product } from 'src/app/models/product.model';
   templateUrl: './product-box.component.html',
 })
 export class ProductBoxComponent implements OnInit {
-  @Input() fullWidthMode = false; //if someone clicks on the product box, it will be full width
+  @Input() fullWidthMode = false;
   @Input() product: Product | undefined;
 
   @Output() addToCart: EventEmitter<Product> = new EventEmitter<Product>();
@@ -16,7 +16,6 @@ export class ProductBoxComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddToCart(): void {
-    console.log('add to cart');
     this.addToCart.emit(this.product);
   }
 }

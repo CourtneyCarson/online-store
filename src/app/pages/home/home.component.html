@@ -1,16 +1,26 @@
-<mat-drawer-container
-  [autosize]="true"
-  class="min-h-full max-w-7xl mx-auto border-x"
->
-  <mat-drawer mode="side" opened class="p-6">
-    <filters (showCategory)="onShowCategory($event)"></filters>
-  </mat-drawer>
-
+<mat-drawer-container [autosize]="true" class="min-h-full mx-auto border-x">
+  <!-- <ng-container *ngIf="isMobile || isTablet"
+    >mobilen & tablet
+    <mat-drawer mode="over" opened class="p-md-6">
+      <filters (showCategory)="onShowCategory($event)"></filters>
+    </mat-drawer>
+  </ng-container> -->
+  <!-- <ng-container *ngIf="isDesktop"> -->
+    <mat-drawer mode="side" opened class="p-md-6">
+      categ
+      <!-- <ng-container *ngIf="isMobile">mobile</ng-container>
+      <ng-container *ngIf="isTablet">tablet</ng-container>
+      <ng-container *ngIf="isDesktop">desktop</ng-container>
+ -->
+      <filters (showCategory)="onShowCategory($event)"></filters>
+    </mat-drawer>
+  <!-- </ng-container> -->
   <mat-drawer-content class="p-6">
     <!-- app products header component -->
+    header
     <products-header
-    (itemsCountChange)="onItemsCountChange($event)"
-    (sortChange)="onSortChange($event)"
+      (itemsCountChange)="onItemsCountChange($event)"
+      (sortChange)="onSortChange($event)"
       (columnCountChange)="onColumnCountChange($event)"
     ></products-header>
 
@@ -18,8 +28,8 @@
     <mat-grid-list gutterSize="16" [cols]="columns" [rowHeight]="rowHeight">
       <mat-grid-tile *ngFor="let product of products">
         <!-- product-box -->
-        <product-box 
-        [product]="product"
+        <product-box
+          [product]="product"
           class="w-full"
           [fullWidthMode]="columns === 1"
           (addToCart)="onAddToCart($event)"
@@ -28,3 +38,24 @@
     </mat-grid-list>
   </mat-drawer-content>
 </mat-drawer-container>
+
+<!-- hide side panel on small screens-->
+<!-- <mat-drawer-container class="min-h-full mx-auto border-x" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <filters (showCategory)="onShowCategory($event)"></filters>
+ 
+
+
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+
+</mat-drawer-container> -->
