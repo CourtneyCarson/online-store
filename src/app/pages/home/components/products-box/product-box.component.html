@@ -2,8 +2,11 @@
   <div [ngClass]="{ flex: fullWidthMode }">
     <!-- product image -->
     <img
-      class="mb-1 mx-auto h-[200px]"
-      [ngClass]="{ 'h-200px': !fullWidthMode, 'h-[360px]': fullWidthMode }"
+      class="mb-1 h-[200px]"
+      [ngClass]="{
+        'h-200px': !fullWidthMode,
+        'h-[360px] w-[360px] ': fullWidthMode
+      }"
       [src]="product.image"
       alt="placeholder img"
     />
@@ -11,7 +14,6 @@
     <!-- product info -->
     <div class="w-full">
       <div [ngClass]="{ 'px-8 flex flex-col justify-between': fullWidthMode }">
-        <h5>{{ product.category }}</h5>
         <p class="truncate hover:whitespace-normal">{{ product.title }}</p>
         <p *ngIf="fullWidthMode">{{ product.description }}</p>
       </div>

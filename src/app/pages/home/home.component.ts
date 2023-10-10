@@ -23,13 +23,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   isTablet: boolean | undefined;
   isDesktop: boolean | undefined;
   sidePanelMode: MatDrawerMode | undefined;
-   showFiller = false;
+  showFiller = false;
   constructor(
     private cartService: CartService,
     private storeService: StoreService
   ) {
     this.checkMediaQuery();
-    // this.setSidePanelMode();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -93,15 +92,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     ).matches;
     this.isDesktop = window.matchMedia('(min-width: 1025px)').matches;
 
-    console.log(this.isMobile, this.isTablet, this.isDesktop);
+    // set mobile columns to 2
+    if (this.isMobile) {
+      this.columns = 2;
+    } else this.columns = 3;
   }
-
-  // setSidePanelMode() {
-  //   if (this.isMobile || this.isTablet) {
-  //     this.sidePanelMode = 'over';
-  //   } else {
-  //     this.sidePanelMode = 'side';
-  //   }
-  //   console.log(this.sidePanelMode);
-  // }
 }

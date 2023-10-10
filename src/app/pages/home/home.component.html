@@ -1,5 +1,5 @@
 <ng-container *ngIf="isDesktop">
-  <mat-drawer-container [autosize]="true" class="min-h-full mx-auto border-x">
+  <mat-drawer-container [autosize]="true" class="min-h-full mx-auto ">
     <mat-drawer mode="side" opened class="p-6">
       <filters (showCategory)="onShowCategory($event)"></filters>
     </mat-drawer>
@@ -30,7 +30,7 @@
 
 <!-- mobile and tablet -->
 <ng-container *ngIf="isMobile || isTablet">
-  <mat-drawer-container class="min-h-full mx-auto border-x" autosize>
+  <mat-drawer-container class="min-h-full mx-auto " autosize>
     <products-header
       (itemsCountChange)="onItemsCountChange($event)"
       (sortChange)="onSortChange($event)"

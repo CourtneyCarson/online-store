@@ -15,17 +15,14 @@ export class ProductsHeaderComponent {
   onSortUpdated(newSort: string): void {
     this.sort = newSort;
     this.sortChange.emit(newSort);
-    // console.log('sort val', this.sort);
   }
 
   onItemsUpdated(count: number): void {
     this.itemsShowCount = count;
     this.itemsCountChange.emit(count);
-    // console.log('itemsShowCount val', this.itemsShowCount);
   }
 
   onColumnsUpdated(columnsNumber: number): void {
-    // console.log('prodsheadercount emittingg', columnsNumber);
     this.columnCountChange.emit(columnsNumber);
   }
 }
