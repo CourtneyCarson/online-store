@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isTablet: boolean | undefined;
   isDesktop: boolean | undefined;
   sidePanelMode: MatDrawerMode | undefined;
-  showFiller = false;
+   showFiller = false;
   constructor(
     private cartService: CartService,
     private storeService: StoreService
